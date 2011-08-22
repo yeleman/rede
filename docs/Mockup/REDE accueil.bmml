@@ -1,0 +1,82 @@
+<mockup version="1.0" skin="sketch" measuredW="1289" measuredH="747" mockupW="1066" mockupH="731">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="428" y="74" w="861" h="673" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>19</bottomheight>
+        <close>true</close>
+        <dragger>true</dragger>
+        <maximizeRestore>false</maximizeRestore>
+        <text>REDE%20Accueil</text>
+        <value>52</value>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="497" y="139" w="732" h="21" measuredW="84" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <bold>true</bold>
+        <size>18</size>
+        <state>disabled</state>
+        <text>Rapports%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="__group__" x="497" y="175" w="733" h="554" measuredW="733" measuredH="554" zOrder="1" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::DataGrid" x="0" y="0" w="733" h="554" measuredW="656" measuredH="194" zOrder="0" locked="false" isInGroup="10">
+          <controlProperties>
+            <align>right</align>
+            <color>16777215</color>
+            <rowHeight>34</rowHeight>
+            <selectedIndex>-1</selectedIndex>
+            <text>Auteur%20%5E%2C%20Nom%20du%20fichier%2C%20Date%20de%20saisie%2C%20Date%20de%20la%20derniere%20modification%2C%20Exporter%20%0AGiacomo%20Guilizzoni%2C%20xxxxxxxxx%2C%2020/01/2011%2C%2020/01/2011%2C%20%0AGuido%20Jack%2C%20xxxxxxxxxxxx%2C%2004/02/2011%2C%2004/02/2011%2C%20%0AMarco%20Botton%2C%20xxxxxxxxxxxxxxxxx%2C%2001/03/2011%2C%2001/03/2011%2C%20%0AMariah%20Maclachlan%2C%20xxxxxxxxxx%2C%2012/04/2011%2C12/04/2011%2C%20%0AValerie%20Liberty%2C%20xxxxxxxxxxx%2C%2006/05/2011%2C%2006/05/2011%2C%20%0A%7B0R%2C%2075L%2C25%2C%200C%7D</text>
+            <value>31</value>
+            <verticalScrollbar>false</verticalScrollbar>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::PointyButton" x="664" y="23" w="36" h="-1" measuredW="36" measuredH="27" zOrder="1" locked="false" isInGroup="10">
+          <controlProperties>
+            <text>ok</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::PointyButton" x="664" y="56" w="36" h="-1" measuredW="36" measuredH="27" zOrder="2" locked="false" isInGroup="10">
+          <controlProperties>
+            <text>ok</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::PointyButton" x="664" y="90" w="36" h="-1" measuredW="36" measuredH="27" zOrder="3" locked="false" isInGroup="10">
+          <controlProperties>
+            <text>ok</text>
+          </controlProperties>
+        </control>
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::PointyButton" x="664" y="124" w="36" h="-1" measuredW="36" measuredH="27" zOrder="4" locked="false" isInGroup="10">
+          <controlProperties>
+            <text>ok</text>
+          </controlProperties>
+        </control>
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::PointyButton" x="664" y="153" w="36" h="-1" measuredW="36" measuredH="27" zOrder="5" locked="false" isInGroup="10">
+          <controlProperties>
+            <text>ok</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::HRule" x="428" y="113" w="857" h="-1" measuredW="100" measuredH="5" zOrder="3" locked="false" isInGroup="-1"/>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::LinkBar" x="435" y="97" w="-1" h="-1" measuredW="700" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Aide%20%28F1%29%2CP%E9cedente%28F2%29%2C%20Suivante%28F3%29%2C%20%20Formilaire%20Saise%28F4%29%2C%20%20Recharge%20SIM%28F5%29%2C%20Pr%E9frence%20%28F6%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::StickyNote" x="223" y="16" w="132" h="165" measuredW="109" measuredH="123" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>10066329</color>
+        <italic>true</italic>
+        <text>Pr%E9ference%3A%20contient%20le%20numero%20du%20serveur%20et%20l%27adresse%20du%20site</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Arrow" x="285" y="22" w="556" h="75" measuredW="150" measuredH="100" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
