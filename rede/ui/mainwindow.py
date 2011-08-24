@@ -7,7 +7,7 @@ import sys
 from PyQt4 import QtGui, QtCore
 
 from dashboard import DashboardWidget
-
+from sim_managementview import SIM_managementViewWidget
 
 class MainWindow(QtGui.QMainWindow):
     def __init__(self):
@@ -20,6 +20,7 @@ class MainWindow(QtGui.QMainWindow):
         self.toolbar = QtGui.QToolBar()
         self.toolbar.addAction("1:Help", self.help)
         self.toolbar.addAction("2:Next", self.help)
+        self.toolbar.addAction("3:SIM management", self.SIM_management)
         self.addToolBar(self.toolbar)
 
         help_sc = QtGui.QShortcut(QtGui.QKeySequence.HelpContents,
@@ -33,6 +34,11 @@ class MainWindow(QtGui.QMainWindow):
     def help(self):
         print(u"Help called")
         self.setWindowTitle(u"Help")
+
+    def SIM_management(self):
+        print(u"SIM management")
+        self.setWindowTitle(u"SIM management")
+        self.change_context(SIM_managementViewWidget)
 
     def change_context(self, context_widget, *args, **kwargs):
 
