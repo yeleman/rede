@@ -7,6 +7,7 @@ import sys
 from PyQt4 import QtGui, QtCore
 
 from dashboard import DashboardWidget
+from send import SendWidget
 
 
 class MainWindow(QtGui.QMainWindow):
@@ -19,7 +20,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.toolbar = QtGui.QToolBar()
         self.toolbar.addAction("1:Help", self.help)
-        self.toolbar.addAction("2:Next", self.help)
+        self.toolbar.addAction("2:Preference", self.goto_preference)
         self.addToolBar(self.toolbar)
 
         help_sc = QtGui.QShortcut(QtGui.QKeySequence.HelpContents,
@@ -28,11 +29,13 @@ class MainWindow(QtGui.QMainWindow):
                               QtCore.QCoreApplication.translate('', "Ctrl+Q")),
                                   self, self.close)
 
-        self.change_context(DashboardWidget)
-
     def help(self):
         print(u"Help called")
         self.setWindowTitle(u"Help")
+        self.change_context(DashboardWidget)
+
+    def goto_preference(self):
+        self.change_context(SendWidget)
 
     def change_context(self, context_widget, *args, **kwargs):
 

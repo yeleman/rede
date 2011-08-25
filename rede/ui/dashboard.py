@@ -15,8 +15,6 @@ class DashboardWidget(REDEWidget):
 
         super(DashboardWidget, self).__init__(parent=parent, *args, **kwargs)
 
-        #self.title = ANMPageTitle(_(u"Account's Summary."))
-
         vbox = QtGui.QVBoxLayout()
         vbox.addWidget(QtGui.QLabel(u"Dashboard"))
 
