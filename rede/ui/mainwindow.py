@@ -7,8 +7,9 @@ import sys
 from PyQt4 import QtGui, QtCore
 
 from dashboard import DashboardWidget
+from helps import HelpWidget
 from send import SendWidget
-from sim_managementview import SIM_managementViewWidget
+from sim_management import SIM_managementWidget
 
 class MainWindow(QtGui.QMainWindow):
     def __init__(self):
@@ -33,14 +34,12 @@ class MainWindow(QtGui.QMainWindow):
         self.change_context(DashboardWidget)
 
     def help(self):
-        print(u"Help called")
         self.setWindowTitle(u"Help")
-        self.change_context(DashboardWidget)
+        self.change_context(HelpWidget)
 
-    def SIM_management(self):
-        print(u"SIM management")
+    def SIM_management(self):        
         self.setWindowTitle(u"SIM management")
-        self.change_context(SIM_managementViewWidget)
+        self.change_context(SIM_managementWidget)
 
     def goto_preference(self):
         self.change_context(SendWidget)
