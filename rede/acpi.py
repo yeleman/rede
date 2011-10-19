@@ -78,7 +78,8 @@ class ACPIBatteryStatus:
         status = self.UNKNOWN
         percent = self.P_UNKNOWN
 
-        if status_str == 'on-line' or status_str.startswith('Charging'):
+        if status_str == 'on-line' or status_str.startswith('Charging') \
+           or status_str.startswith('Full'):
             status = self.ONLINE
         if status_str == 'off-line' or status_str.startswith('Discharging'):
             status = self.OFFLINE
