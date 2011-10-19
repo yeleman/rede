@@ -7,8 +7,6 @@ import sys
 from PyQt4 import QtGui, QtCore
 
 from dashboard import DashboardWidget
-from send import SendWidget
-from sim_managementview import SIM_managementViewWidget
 from menu import *
 from statusbar import REDEStatusBar
 
