@@ -7,9 +7,10 @@ import sys
 from PyQt4 import QtGui, QtCore
 
 from dashboard import DashboardWidget
-from helps import HelpWidget
 from send import SendWidget
-from sim_management import SIM_managementWidget
+from sim_managementview import SIM_managementViewWidget
+from menu import *
+from statusbar import REDEStatusBar
 
 class MainWindow(QtGui.QMainWindow):
     def __init__(self):
@@ -19,30 +20,14 @@ class MainWindow(QtGui.QMainWindow):
         self.setWindowTitle(_(u"Remote Excel Data Entry"))
         self.setWindowIcon(QtGui.QIcon('images/icon32.png'))
 
-        self.toolbar = QtGui.QToolBar()
-        self.toolbar.addAction("1:Help", self.help)
-        self.toolbar.addAction("2:Preference", self.goto_preference)
-        self.toolbar.addAction("3:SIM management", self.SIM_management)
-        self.addToolBar(self.toolbar)
+        self.menu = MainMenu(self)
+        self.menu.build()
+        self.addToolBar(self.menu)
 
-        help_sc = QtGui.QShortcut(QtGui.QKeySequence.HelpContents,
-                                  self, self.help)
-        exit_sc = QtGui.QShortcut(QtGui.QKeySequence(
-                              QtCore.QCoreApplication.translate('', "Ctrl+Q")),
-                                  self, self.close)
+        self.statusbar = REDEStatusBar(self)
+        self.setStatusBar(self.statusbar)
 
         self.change_context(DashboardWidget)
-
-    def help(self):
-        self.setWindowTitle(u"Help")
-        self.change_context(HelpWidget)
-
-    def SIM_management(self):        
-        self.setWindowTitle(u"SIM management")
-        self.change_context(SIM_managementWidget)
-
-    def goto_preference(self):
-        self.change_context(SendWidget)
 
     def change_context(self, context_widget, *args, **kwargs):
 
@@ -51,6 +36,10 @@ class MainWindow(QtGui.QMainWindow):
 
         # attach context to window
         self.setCentralWidget(self.view_widget)
+
+    def change_context_id(self, context_id, *args, **kwargs):
+        contexts = {'help': {'widget': DashboardWidget, 'menu': None}}
+        self.change_context(contexts[context_id]['widget'], args, kwargs)
 
     def open_dialog(self, dialog, modal=False, *args, **kwargs):
         d = dialog(parent=self, *args, **kwargs)
