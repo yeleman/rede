@@ -26,37 +26,27 @@ class BatteryIndicator(QtGui.QWidget):
         QtGui.QWidget.__init__(self, parent)
 
         self.hbox = QtGui.QHBoxLayout()
+        self.batt_label = QtGui.QLabel(u"Power Status:")
         self.batt_icon = QtGui.QLabel()
-        self.batt_icon.setPixmap(QtGui.QPixmap("images/battery-010.png"))
-        #self.batt_icon.setToolTip()
+        self.batt_icon.setPixmap(QtGui.QPixmap())
         self.batt_text = QtGui.QLabel()
 
-
-        self.icon_000 = QtGui.QPixmap("images/battery-000.png")
-        self.icon_010 = QtGui.QPixmap("images/battery-010.png")
-        self.icon_020 = QtGui.QPixmap("images/battery-020.png")
-        self.icon_030 = QtGui.QPixmap("images/battery-030.png")
-        self.icon_040 = QtGui.QPixmap("images/battery-040.png")
-        self.icon_050 = QtGui.QPixmap("images/battery-050.png")
-        self.icon_060 = QtGui.QPixmap("images/battery-060.png")
-        self.icon_070 = QtGui.QPixmap("images/battery-070.png")
-        self.icon_080 = QtGui.QPixmap("images/battery-080.png")
-        self.icon_090 = QtGui.QPixmap("images/battery-090.png")
-        self.icon_100 = QtGui.QPixmap("images/battery-100.png")
-        self.batt_icon_100 = QtGui.QLabel()
-        self.batt_icon_100.setPixmap(self.icon_090)
-
+        self.hbox.addWidget(self.batt_label)
         self.hbox.addWidget(self.batt_text)
         self.hbox.addWidget(self.batt_icon)
 
         self.battery = ACPIBatteryStatus(10)
 
+        self.update()
         self.startTimer(2000)
 
         self.setLayout(self.hbox)
 
     def icon(self, percent):
-        return getattr(self, 'icon_%s' % str(self.icon_name(percent)).zfill(3))
+        if percent == ACPIBatteryStatus.P_UNKNOWN:
+            return QtGui.QPixmap()
+        else:
+            return QtGui.QPixmap('images/battery-%s.png' % str(self.icon_name(percent)).zfill(3))
 
     def icon_name(self, percent):
         ret = percent % 10

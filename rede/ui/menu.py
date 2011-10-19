@@ -2,7 +2,7 @@
 # encoding=utf-8
 # maintainer: rgaudin
 
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtGui, QtCore, Qt
 from send import SendWidget
 
 class REDEMenu(QtGui.QToolBar):
@@ -26,12 +26,29 @@ class REDEMenu(QtGui.QToolBar):
     def build(self):
         self.clear()
         for item in self.items():
-            print item.action
-            self.addAction(u"[%d] %s" % (item.shortcut, item.name), item.action)
+            icon = QtGui.QIcon(QtGui.QPixmap("images/f%d.png" % item.shortcut))
+            btn = ToolBarButton(self)
+            btn.setDefaultAction(QtGui.QAction(icon, item.name, self))
+            btn.setTarget(item.action)
+            self.addWidget(btn)
             QtGui.QShortcut(QtGui.QKeySequence(QtCore.QCoreApplication.translate('', "F%d" % item.shortcut)), self, item.action)
 
     def goto(self, action):
         pass
+
+class ToolBarButton(QtGui.QToolButton):
+
+    def __init__(self, parent):
+        QtGui.QToolButton.__init__(self, parent)
+        self.setToolButtonStyle(2)
+        self._target = None
+
+    def setTarget(self, func):
+        self._target = func
+
+    def mouseReleaseEvent(self, event):
+        if self._target:
+            self._target.__call__()
 
 class MainMenu(REDEMenu):
 

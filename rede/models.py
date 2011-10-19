@@ -8,74 +8,119 @@ INPUT_NEGATIVE_INTEGER = 'negint'
 INPUT_DATE = 'date'
 
 
-class FormSet(object):
+class BaseElement(object):
+    ''' base class used to represent all elements '''
 
-    def __init__(self, title=None, id=None):
-        self.title = title
-        self.forms = []
+    def __init__(self, id=None):
+        # assign random id if not supplied
+        if not id:
+            id = self.random_id()
+        self.id = id
         self.attrs = {}
 
-    def addAttribute(self, name, value):
+    @classmethod
+    def random_id(cls):
+        return 24
+
+    def addAttr(self, name, value):
         self.attrs[name] = value
+
+    def delAttr(self, name):
+        del self.attrs[name]
+
+    def displayName(self):
+        base = None
+        if hasattr(self, 'title'):
+            base = getattr(self, 'title')
+        if hasattr(self, 'label'):
+            base = getattr(self, 'label')
+        if hasattr(self, 'text'):
+            base = getattr(self, 'text')
+        if not base:
+            base = self.__class__.title()
+        return u"%(base)s/%(id)s" % {'base': base, 'id': self.id}
+
+
+class FormSet(BaseElement):
+    ''' root object. represents a collection of forms '''
+
+    def __init__(self, id=None, title==u''):
+        super(FormSet, self).__init__(id)
+        self.title = title
+        self.forms = []
 
     def addForm(self, form):
         self.forms.append(form)
 
 
-class Form(object):
+class Form(BaseElement):
+    ''' represent a form with its validation associated.
 
-    def __init__(self, title=None, id=None):
+        Usually represented on a single page '''
+
+    def __init__(self, id=None, title=u''):
+        super(Form, self).__init__(id)
         self.title = title
         self.items = []
-        self.attrs = {}
 
-    def addAttribute(self, name, value):
-        self.attrs[name] = value
+    def addItem(self, item):
+        self.items.append(item)
+
+class Table(BaseElement):
+    ''' Table can only hold rows '''
+
+    def __init__(self, id=None):
+        super(Table, self).__init__(id)
+        self.rows = []
+
+    def addRow(self, row):
+        self.rows.append(row)
+
+
+class Row(BaseElement):
+    ''' Row can only contain cells '''
+
+    def __init__(self, id=None):
+        super(Row, self).__init__(id)
+        self.cells = []
+
+    def addCell(self, cell):
+        self.cells.append(cell)
+
+
+class Cell(BaseElement):
+    ''' Cell can only contain one Item '''
+
+    def __init__(self, id=None):
+        super(Cell, self).__init__(id)
+        self.items = []
 
     def addItem(self, item):
         self.items.append(item)
 
 
-class GenericItem(object):
-    def __init__(self):
-        self.attrs = {}
-
-    def addAttribute(self, name, value):
-        self.attrs[name] = value
-
-    def displayName(self):
-        if hasattr(self, 'label'):
-            if self.label:
-                return self.label
-        if hasattr(self, 'title'):
-            if self.title:
-                return self.title
-        return self.__class__
-
-
-class Separator(GenericItem):
-
-    def __init__(self, title=None, id=None):
-        self.title = title
-        self.id = id
-
-
-class Item(GenericItem):
+class Separator(BaseElement):
+    ''' An empty container '''
 
     def __init__(self, id=None):
-
-        self.id = id
-        self.label = u""
-        self.input = None
-        self.attrs = {}
-
-    def addAttribute(self, name, value):
-        self.attrs[name] = value
+        super(Separator, self).__init__(id)
 
 
-class Input(object):
+class Item(BaseElement):
+    ''' Item is either Input, Separator or Label '''
+    pass
 
-    def __init__(self, type=INPUT_TEXT, value=None):
 
+class Input(BaseElement):
+    ''' Input holds the data and type '''
+
+    def __init__(self, id, type=INPUT_TEXT, value=None):
+        super(Input, self).__init__(id)
         self.type = type
         self.value = value
+
+class Label(Item):
+
+    def __init__(self, id):
+        super(Label, self).__init__(id)
+        self.text = u''

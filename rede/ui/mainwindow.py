@@ -34,6 +34,7 @@ class MainWindow(QtGui.QMainWindow):
 
         # attach context to window
         self.setCentralWidget(self.view_widget)
+        self.view_widget.setFocus()
 
     def change_context_id(self, context_id, *args, **kwargs):
         contexts = {'help': {'widget': DashboardWidget, 'menu': None}}
