@@ -4,6 +4,7 @@
 
 from PyQt4 import QtGui, QtCore, Qt
 from send import SendWidget
+from sim_management import SIM_managementWidget
 
 class REDEMenu(QtGui.QToolBar):
 
@@ -85,7 +86,8 @@ class MainMenu(REDEMenu):
 
     def sim_mgmt(self):
         print "sim"
-        pass
+        self.parent.setWindowTitle(u"SIM Management")
+        self.parent.change_context(SIM_managementWidget)
 
     def preferences(self):
         print "pref"
