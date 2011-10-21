@@ -17,9 +17,9 @@ class SendWidget(REDEWidget):
         vbox = QtGui.QVBoxLayout()
         gridbox = QtGui.QGridLayout()
 
-        self.label = PageTitle(_(u"Send your report."))
+        self.title = PageTitle(_(u"Send your report."))
         self.intro = QtGui.QLabel(u"Your report is ready for sending.\nYou need to choose a sending method depending on your device and plan.")
-        vbox.addWidget(self.label)
+        vbox.addWidget(self.title)
         vbox.addWidget(self.intro)
 
         self.combobox = QtGui.QComboBox()
