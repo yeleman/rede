@@ -4,7 +4,7 @@
 
 from PyQt4 import QtGui
 
-from common import REDEWidget
+from common import REDEWidget, PageTitle
 
 
 class HelpWidget(REDEWidget):
@@ -14,6 +14,8 @@ class HelpWidget(REDEWidget):
         super(HelpWidget, self).__init__(parent=parent, *args, **kwargs)
 
         vbox = QtGui.QVBoxLayout()
-        vbox.addWidget(QtGui.QLabel(u"Help"))
+        # Le titre
+        self.label = PageTitle(_(u"Help"))
+        vbox.addWidget(self.label)
 
         self.setLayout(vbox)

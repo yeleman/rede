@@ -3,7 +3,9 @@
 # maintainer: rgaudin
 
 from PyQt4 import QtGui, QtCore, Qt
+
 from send import SendWidget
+from helps import HelpWidget
 from sim_management import SIM_managementWidget
 from data_entry import DataEntryWidget
 from preferences import PreferencesWidget
@@ -75,6 +77,7 @@ class MainMenu(REDEMenu):
 
     def help(self):
         print "help"
+        self.parent.change_context(HelpWidget)
 
     def next(self):
         print "next"
