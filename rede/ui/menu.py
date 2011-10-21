@@ -5,6 +5,8 @@
 from PyQt4 import QtGui, QtCore, Qt
 from send import SendWidget
 from sim_management import SIM_managementWidget
+from data_entry import DataEntryWidget
+from preferences import PreferencesWidget
 
 class REDEMenu(QtGui.QToolBar):
 
@@ -61,14 +63,14 @@ class MainMenu(REDEMenu):
 
     def items(self):
         return [
-            REDEMenuItem(1, u"Help", self.help),
-            REDEMenuItem(2, u"Next", self.next),
-            REDEMenuItem(3, u"Previous", self.previous),
-            REDEMenuItem(4, u"Data Entry", self.data_entry),
-            REDEMenuItem(5, u"SIM Management", self.sim_mgmt),
-            REDEMenuItem(6, u"Send", self.send),
-            REDEMenuItem(7, u"Preferences", self.preferences),
-            REDEMenuItem(12, u"Quit", self.quit),
+            REDEMenuItem(1, _(u"Help"), self.help),
+            REDEMenuItem(2, _(u"Next"), self.next),
+            REDEMenuItem(3, _(u"Previous"), self.previous),
+            REDEMenuItem(4, _(u"Data Entry"), self.data_entry),
+            REDEMenuItem(5, _(u"SIM Management"), self.sim_mgmt),
+            REDEMenuItem(6, _(u"Send"), self.send),
+            REDEMenuItem(7, _(u"Preferences"), self.preferences),
+            REDEMenuItem(12, _(u"Quit"), self.quit),
         ]
 
     def help(self):
@@ -82,19 +84,21 @@ class MainMenu(REDEMenu):
 
     def data_entry(self):
         print "data entry"
-        pass
+        self.parent.setWindowTitle(_(u"Data Entry"))
+        self.parent.change_context(DataEntryWidget)
 
     def sim_mgmt(self):
         print "sim"
-        self.parent.setWindowTitle(u"SIM Management")
+        self.parent.setWindowTitle(_(u"SIM Management"))
         self.parent.change_context(SIM_managementWidget)
 
     def preferences(self):
         print "pref"
-        pass
+        self.parent.setWindowTitle(_(u"Preferences"))
+        self.parent.change_context(PreferencesWidget)
 
     def send(self):
-        self.parent.setWindowTitle(u"Send")
+        self.parent.setWindowTitle(_(u"Send"))
         self.parent.change_context(SendWidget)
 
     def quit(self):
