@@ -18,6 +18,8 @@ class MainWindow(QtGui.QMainWindow):
         self.setWindowTitle(_(u"Remote Excel Data Entry"))
         self.setWindowIcon(QtGui.QIcon('images/icon32.png'))
 
+        QtGui.QShortcut(QtGui.QKeySequence(QtCore.QCoreApplication.translate('', "Ctrl+q")), self, self.close)
+
         self.menu = MainMenu(self)
         self.menu.build()
         self.addToolBar(self.menu)

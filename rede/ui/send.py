@@ -5,7 +5,7 @@
 from PyQt4 import QtGui
 from PyQt4.QtCore import Qt
 
-from common import REDEWidget
+from common import REDEWidget, PageTitle, FormLabel
 
 
 class SendWidget(REDEWidget):
@@ -15,30 +15,33 @@ class SendWidget(REDEWidget):
         super(SendWidget, self).__init__(parent=parent, *args, **kwargs)
 
         vbox = QtGui.QVBoxLayout()
-        formbox = QtGui.QFormLayout()
         gridbox = QtGui.QGridLayout()
 
-        self.label = QtGui.QLabel(_(u"Choice of sending"))
-        self.label.setFont(QtGui.QFont("Times New Roman", 24))
-        self.label.setAlignment(Qt.AlignCenter)
-        formbox.addWidget(self.label)
+        self.label = PageTitle(_(u"Send your report."))
+        self.intro = QtGui.QLabel(u"Your report is ready for sending.\nYou need to choose a sending method depending on your device and plan.")
+        vbox.addWidget(self.label)
+        vbox.addWidget(self.intro)
 
         self.combobox = QtGui.QComboBox()
         self.combobox.addItem(_(u'SMS'))
-        self.combobox.addItem(_(u'Internet'))
-        gridbox.addWidget(QtGui.QLabel(_(u"Type of mail")), 0, 0)
-        gridbox.addWidget(self.combobox, 0, 1)
+        self.combobox.addItem(_(u'Internet (EDGE Data)'))
+        gridbox.addWidget(FormLabel(_(u"Transfer Type:")), 1, 0)
+        gridbox.addWidget(self.combobox, 1, 1)
 
-        gridbox.addWidget(QtGui.QLabel(_(u"details")), 1, 0)
-        gridbox.addWidget(QtGui.QLineEdit(_(u"This mailing will cost 4 SMS")), 1,1)
+        gridbox.addWidget(FormLabel(_(u"Estimation Cost:")), 2, 0)
+        gridbox.addWidget(QtGui.QLabel(_(u"Sending this report would cost you 4 SMS.")), 2,1)
 
         cancel_but = QtGui.QPushButton(_(u"Cancel"))
         send_but = QtGui.QPushButton(_(u"Send"))
-        gridbox.addWidget(send_but, 2, 1)
-        gridbox.addWidget(cancel_but, 3, 1)
+        gridbox.addWidget(send_but, 3, 1)
+        gridbox.addWidget(cancel_but, 4, 1)
         send_but.clicked.connect(self.send)
         cancel_but.clicked.connect(self.cancel)
-        vbox.addWidget(self.label)
+
+        gridbox.setColumnStretch(2, 1)
+        gridbox.setRowStretch(5, 10)
+
+
         vbox.addLayout(gridbox)
         self.setLayout(vbox)
 

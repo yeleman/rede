@@ -26,3 +26,21 @@ class REDEWidget(QtGui.QWidget):
     def open_dialog(self, dialog, modal=False, *args, **kwargs):
         return self.parentWidget().open_dialog(dialog, \
                                                modal=modal, *args, **kwargs)
+
+class PageTitle(QtGui.QLabel):
+
+    def __init__(self, text, parent=None):
+        QtGui.QLabel.__init__(self, text, parent)
+        font = QtGui.QFont("Times New Roman", 16)
+        font.setBold(True)
+        self.setFont(font)
+        self.setAlignment(Qt.AlignLeft)
+
+class FormLabel(QtGui.QLabel):
+
+    def __init__(self, text, parent=None):
+        QtGui.QLabel.__init__(self, text, parent)
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.setFont(font)
+        self.setAlignment(Qt.AlignLeft)
