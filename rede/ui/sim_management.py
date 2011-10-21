@@ -4,7 +4,7 @@
 
 from PyQt4 import QtGui,QtCore
 
-from common import REDEWidget
+from common import REDEWidget, PageTitle
 
 
 class SIM_managementWidget(REDEWidget):
@@ -15,23 +15,28 @@ class SIM_managementWidget(REDEWidget):
                                                         *args, **kwargs)
 
         vbox = QtGui.QVBoxLayout()
+        gridbox = QtGui.QGridLayout()
+
+        self.label = PageTitle(_(u"Reload SIM card."))
+        vbox.addWidget(self.label)
+        
         self.carte_number = QtGui.QLineEdit()
         self.cb = QtGui.QCheckBox()
         self.combo = QtGui.QComboBox(self)
         self.combo.addItem(u"Orange")
         self.combo.addItem(u"Malitel")
         self.button = QtGui.QPushButton(_(u"ok"))
-        formbox = QtGui.QGridLayout()
-        formbox.addWidget(QtGui.QLabel(_(u"Number of the SIM card")), 0, 1)
-        formbox.addWidget(self.carte_number, 0,2)
-        formbox.addWidget(QtGui.QLabel(_(u"Internet package everywere")), 1, 1)
-        formbox.addWidget(self.cb, 1, 2)
-        formbox.addWidget(QtGui.QLabel(_(u"Operator")), 2, 1)
-        formbox.addWidget(self.combo, 2, 2)
-        formbox.addWidget(self.button, 3, 2)
+        
+        gridbox.addWidget(QtGui.QLabel(_(u"Number of the SIM card")), 0, 1)
+        gridbox.addWidget(self.carte_number, 0,2)
+        gridbox.addWidget(QtGui.QLabel(_(u"Internet package everywere")), 1, 1)
+        gridbox.addWidget(self.cb, 1, 2)
+        gridbox.addWidget(QtGui.QLabel(_(u"Operator")), 2, 1)
+        gridbox.addWidget(self.combo, 2, 2)
+        gridbox.addWidget(self.button, 3, 2)
 
-        formbox.setColumnStretch(3, 1)
-        formbox.setRowStretch(4, 10)
+        gridbox.setColumnStretch(3, 1)
+        gridbox.setRowStretch(4, 10)
 
-        vbox.addLayout(formbox)
+        vbox.addLayout(gridbox)
         self.setLayout(vbox)
