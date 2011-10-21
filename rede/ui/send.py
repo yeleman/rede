@@ -18,7 +18,9 @@ class SendWidget(REDEWidget):
         gridbox = QtGui.QGridLayout()
 
         self.title = PageTitle(_(u"Send your report."))
-        self.intro = QtGui.QLabel(u"Your report is ready for sending.\nYou need to choose a sending method depending on your device and plan.")
+        self.intro = QtGui.QLabel(u"Your report is ready for sending.\nYou" \
+                                  u"need to choose a sending method" \
+                                  u" depending on your device and plan.")
         vbox.addWidget(self.title)
         vbox.addWidget(self.intro)
 
@@ -29,7 +31,8 @@ class SendWidget(REDEWidget):
         gridbox.addWidget(self.combobox, 1, 1)
 
         gridbox.addWidget(FormLabel(_(u"Estimation Cost:")), 2, 0)
-        gridbox.addWidget(QtGui.QLabel(_(u"Sending this report would cost you 4 SMS.")), 2,1)
+        gridbox.addWidget(QtGui.QLabel(_(u"Sending this report would cost" \
+                                         u" you 4 SMS.")), 2, 1)
 
         cancel_but = QtGui.QPushButton(_(u"Cancel"))
         send_but = QtGui.QPushButton(_(u"Send"))
@@ -40,7 +43,6 @@ class SendWidget(REDEWidget):
 
         gridbox.setColumnStretch(2, 1)
         gridbox.setRowStretch(5, 10)
-
 
         vbox.addLayout(gridbox)
         self.setLayout(vbox)

@@ -6,6 +6,7 @@ from PyQt4 import QtGui
 
 from common import REDEWidget, PageTitle
 
+
 class PreferencesWidget(REDEWidget):
 
     def __init__(self, parent=0, *args, **kwargs):
