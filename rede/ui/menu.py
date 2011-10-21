@@ -66,13 +66,13 @@ class MainMenu(REDEMenu):
             REDEMenuItem(3, u"Previous", self.previous),
             REDEMenuItem(4, u"Data Entry", self.data_entry),
             REDEMenuItem(5, u"SIM Management", self.sim_mgmt),
-            REDEMenuItem(6, u"Preferences", self.preferences),
+            REDEMenuItem(6, u"Send", self.send),
+            REDEMenuItem(7, u"Preferences", self.preferences),
             REDEMenuItem(12, u"Quit", self.quit),
         ]
 
     def help(self):
-        self.parent.setWindowTitle(u"Help")
-        self.parent.change_context(SendWidget)
+        print "help"
 
     def next(self):
         print "next"
@@ -93,9 +93,14 @@ class MainMenu(REDEMenu):
         print "pref"
         pass
 
+    def send(self):
+        self.parent.setWindowTitle(u"Send")
+        self.parent.change_context(SendWidget)
+
     def quit(self):
         self.parent.close()
         pass
+
 
 class REDEMenuItem:
 
