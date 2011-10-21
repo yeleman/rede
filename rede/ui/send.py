@@ -16,6 +16,7 @@ class SendWidget(REDEWidget):
 
         vbox = QtGui.QVBoxLayout()
         formbox = QtGui.QFormLayout()
+        gridbox = QtGui.QGridLayout()
 
         self.label = QtGui.QLabel(_(u"Choice of sending"))
         self.label.setFont(QtGui.QFont("Times New Roman", 24))
@@ -25,18 +26,20 @@ class SendWidget(REDEWidget):
         self.combobox = QtGui.QComboBox()
         self.combobox.addItem(_(u'SMS'))
         self.combobox.addItem(_(u'Internet'))
-        formbox.addRow(_(u"Type of mail"), self.combobox)
-        formbox.addRow(_(u"details"), QtGui.QLineEdit(_(u"This mailing will cost 4 SMS")))
+        gridbox.addWidget(QtGui.QLabel(_(u"Type of mail")), 0, 0)
+        gridbox.addWidget(self.combobox, 0, 1)
+
+        gridbox.addWidget(QtGui.QLabel(_(u"details")), 1, 0)
+        gridbox.addWidget(QtGui.QLineEdit(_(u"This mailing will cost 4 SMS")), 1,1)
 
         cancel_but = QtGui.QPushButton(_(u"Cancel"))
         send_but = QtGui.QPushButton(_(u"Send"))
-        formbox.addWidget(send_but)
-        formbox.addWidget(cancel_but)
-
+        gridbox.addWidget(send_but, 2, 1)
+        gridbox.addWidget(cancel_but, 3, 1)
         send_but.clicked.connect(self.send)
         cancel_but.clicked.connect(self.cancel)
-
-        vbox.addLayout(formbox)
+        vbox.addWidget(self.label)
+        vbox.addLayout(gridbox)
         self.setLayout(vbox)
 
     def send(self):
