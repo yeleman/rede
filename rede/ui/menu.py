@@ -10,6 +10,7 @@ from sim_management import SIM_managementWidget
 from data_entry import DataEntryWidget
 from preferences import PreferencesWidget
 
+
 class REDEMenu(QtGui.QToolBar):
 
     def __init__(self, parent):
@@ -36,10 +37,13 @@ class REDEMenu(QtGui.QToolBar):
             btn.setDefaultAction(QtGui.QAction(icon, item.name, self))
             btn.setTarget(item.action)
             self.addWidget(btn)
-            QtGui.QShortcut(QtGui.QKeySequence(QtCore.QCoreApplication.translate('', "F%d" % item.shortcut)), self, item.action)
+            QtGui.QShortcut(QtGui.QKeySequence(QtCore\
+                                 .QCoreApplication.translate('', "F%d" \
+                                 % item.shortcut)), self, item.action)
 
     def goto(self, action):
         pass
+
 
 class ToolBarButton(QtGui.QToolButton):
 
@@ -54,6 +58,7 @@ class ToolBarButton(QtGui.QToolButton):
     def mouseReleaseEvent(self, event):
         if self._target:
             self._target.__call__()
+
 
 class MainMenu(REDEMenu):
 
@@ -116,5 +121,3 @@ class REDEMenuItem:
         self.action = action
         self.shortcut = shortcut
         self.action_args = action_args
-
-
