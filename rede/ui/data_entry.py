@@ -16,7 +16,7 @@ class DataEntryWidget(REDEWidget):
         gridbox = QtGui.QGridLayout()
 
         self.title = PageTitle(_(u"Data Entry."))
-        self.intro = QtGui.QLabel(u"")
+        self.intro = PageIntro(_(u""))
         vbox.addWidget(self.title)
         vbox.addWidget(self.intro)
 

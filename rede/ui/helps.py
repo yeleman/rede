@@ -15,7 +15,7 @@ class HelpWidget(REDEWidget):
 
         vbox = QtGui.QVBoxLayout()
         # Le titre
-        self.label = PageTitle(_(u"Help"))
-        vbox.addWidget(self.label)
+        self.title = PageTitle(_(u"Help"))
+        vbox.addWidget(self.title)
 
         self.setLayout(vbox)

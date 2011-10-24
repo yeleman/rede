@@ -36,6 +36,15 @@ class PageTitle(QtGui.QLabel):
         self.setFont(font)
         self.setAlignment(Qt.AlignLeft)
 
+
+class PageIntro(QtGui.QLabel):
+
+    def __init__(self, text, parent=None):
+        QtGui.QLabel.__init__(self, text, parent)
+        font = QtGui.QFont("Times New Roman", 12)
+        self.setAlignment(Qt.AlignLeft)
+
+
 class FormLabel(QtGui.QLabel):
 
     def __init__(self, text, parent=None):

@@ -4,7 +4,7 @@
 
 from PyQt4 import QtGui
 
-from common import REDEWidget
+from common import REDEWidget, PageTitle
 
 
 class DashboardWidget(REDEWidget):
@@ -13,8 +13,9 @@ class DashboardWidget(REDEWidget):
 
         super(DashboardWidget, self).__init__(parent=parent, *args, **kwargs)
 
-        self.setWindowTitle(u"Dashboard")
         vbox = QtGui.QVBoxLayout()
-        vbox.addWidget(QtGui.QLabel(_(u"Dashboard")))
+        # Le titre
+        self.title = PageTitle(_(u"Dashboard"))
+        vbox.addWidget(self.title)
 
         self.setLayout(vbox)

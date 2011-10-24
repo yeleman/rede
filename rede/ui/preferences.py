@@ -4,7 +4,7 @@
 
 from PyQt4 import QtGui
 
-from common import REDEWidget, PageTitle
+from common import REDEWidget, PageTitle, PageIntro
 
 
 class PreferencesWidget(REDEWidget):
@@ -16,7 +16,7 @@ class PreferencesWidget(REDEWidget):
         gridbox = QtGui.QGridLayout()
 
         self.title = PageTitle(_(u"Change your preferences."))
-        self.intro = QtGui.QLabel(u"")
+        self.intro = PageIntro(_(u""))
         vbox.addWidget(self.title)
         vbox.addWidget(self.intro)
 

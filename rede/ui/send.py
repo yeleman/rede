@@ -5,7 +5,7 @@
 from PyQt4 import QtGui
 from PyQt4.QtCore import Qt
 
-from common import REDEWidget, PageTitle, FormLabel
+from common import REDEWidget, PageTitle, PageIntro, FormLabel
 
 
 class SendWidget(REDEWidget):
@@ -18,9 +18,9 @@ class SendWidget(REDEWidget):
         gridbox = QtGui.QGridLayout()
 
         self.title = PageTitle(_(u"Send your report."))
-        self.intro = QtGui.QLabel(u"Your report is ready for sending.\nYou" \
+        self.intro = PageIntro(_(u"Your report is ready for sending.\nYou" \
                                   u"need to choose a sending method" \
-                                  u" depending on your device and plan.")
+                                  u" depending on your device and plan."))
         vbox.addWidget(self.title)
         vbox.addWidget(self.intro)
 
