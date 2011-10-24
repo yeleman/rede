@@ -56,6 +56,7 @@ class ToolBarButton(QtGui.QToolButton):
         self._target = func
 
     def mouseReleaseEvent(self, event):
+        QtGui.QToolButton.mouseReleaseEvent(self, event)
         if self._target:
             self._target.__call__()
 
