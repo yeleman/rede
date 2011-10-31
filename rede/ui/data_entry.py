@@ -2,9 +2,9 @@
 # encoding=utf-8
 # maintainer: Alou
 
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 
-from common import REDEWidget, PageTitle
+from common import REDEWidget, PageTitle, PageIntro, DateEdit
 
 
 class DataEntryWidget(REDEWidget):
@@ -19,6 +19,9 @@ class DataEntryWidget(REDEWidget):
         self.intro = PageIntro(_(u""))
         vbox.addWidget(self.title)
         vbox.addWidget(self.intro)
+
+        self.date = DateEdit()
+        vbox.addWidget(self.date)
 
         vbox.addLayout(gridbox)
         self.setLayout(vbox)

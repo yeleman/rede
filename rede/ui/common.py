@@ -62,12 +62,22 @@ class IntLineEdit(QtGui.QLineEdit):
         QtGui.QLineEdit.__init__(self, parent)
         self.setValidator(QtGui.QIntValidator(0, 100000, self))
 
+
 class FloatLineEdit(QtGui.QLineEdit):
     """ Accepter que des nombre positif et les nombre avec virgule """
 
     def __init__(self, parent=None):
         QtGui.QLineEdit.__init__(self, parent)
         self.setValidator(QtGui.QDoubleValidator(0, 100000, 2, self))
+
+
+class DateEdit(QtGui.QDateEdit):
+    """ Accepter que une date """
+
+    def __init__(self, parent=None):
+        QtGui.QDateEdit.__init__(self, parent)
+        self.setDisplayFormat("dd.MM.yyyy")
+
 
 
 
