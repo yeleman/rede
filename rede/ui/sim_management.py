@@ -4,7 +4,7 @@
 
 from PyQt4 import QtGui, QtCore
 
-from common import REDEWidget, PageTitle, FormLabel
+from common import REDEWidget, PageTitle, FormLabel, IntLineEdit
 
 
 class SIM_managementWidget(REDEWidget):
@@ -21,7 +21,7 @@ class SIM_managementWidget(REDEWidget):
         self.label = PageTitle(_(u"Reload SIM card."))
         vbox.addWidget(self.label)
 
-        self.carte_number = QtGui.QLineEdit()
+        self.carte_number = IntLineEdit()
         self.cb = QtGui.QCheckBox()
         self.combo = QtGui.QComboBox(self)
         self.combo.addItem(u"Orange")

@@ -53,3 +53,21 @@ class FormLabel(QtGui.QLabel):
         font.setBold(True)
         self.setFont(font)
         self.setAlignment(Qt.AlignLeft)
+
+
+class IntLineEdit(QtGui.QLineEdit):
+    """Accepter que des nombre positive"""
+
+    def __init__(self, parent=None):
+        QtGui.QLineEdit.__init__(self, parent)
+        self.setValidator(QtGui.QIntValidator(0, 100000, self))
+
+class FloatLineEdit(QtGui.QLineEdit):
+    """ Accepter que des nombre positif et les nombre avec virgule """
+
+    def __init__(self, parent=None):
+        QtGui.QLineEdit.__init__(self, parent)
+        self.setValidator(QtGui.QDoubleValidator(0, 100000, 2, self))
+
+
+
