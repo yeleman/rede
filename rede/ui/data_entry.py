@@ -20,7 +20,7 @@ class DataEntryWidget(REDEWidget):
         vbox.addWidget(self.title)
         vbox.addWidget(self.intro)
 
-        self.date = DateEdit()
+        self.date = DateEdit(QtCore.QDate.currentDate())
         vbox.addWidget(self.date)
 
         vbox.addLayout(gridbox)

@@ -2,7 +2,7 @@
 # encoding=utf-8
 # maintainer: rgaudin
 
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 
 MAIN_WIDGET_SIZE = 900
@@ -28,6 +28,7 @@ class REDEWidget(QtGui.QWidget):
                                                modal=modal, *args, **kwargs)
 
 class PageTitle(QtGui.QLabel):
+    """ Formatage du titre de page """
 
     def __init__(self, text, parent=None):
         QtGui.QLabel.__init__(self, text, parent)
@@ -38,6 +39,7 @@ class PageTitle(QtGui.QLabel):
 
 
 class PageIntro(QtGui.QLabel):
+    """ Formatage de l'introduction de page """
 
     def __init__(self, text, parent=None):
         QtGui.QLabel.__init__(self, text, parent)
@@ -56,7 +58,7 @@ class FormLabel(QtGui.QLabel):
 
 
 class IntLineEdit(QtGui.QLineEdit):
-    """Accepter que des nombre positive"""
+    """Accepter que des nombre positive """
 
     def __init__(self, parent=None):
         QtGui.QLineEdit.__init__(self, parent)
@@ -76,8 +78,5 @@ class DateEdit(QtGui.QDateEdit):
 
     def __init__(self, parent=None):
         QtGui.QDateEdit.__init__(self, parent)
-        self.setDisplayFormat("dd.MM.yyyy")
-
-
-
-
+        self.setDisplayFormat("MMMM yyyy")
+        self.setDateRange(QtCore.QDate(1999, 1, 1), QtCore.QDate(2100, 1, 1))
